@@ -8,16 +8,106 @@
     name="description"
     content="Kalendersida för den lokala hyresgästföreningen."
   >
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260401">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
     rel="stylesheet"
   >
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260401">
+  <style>
+    .utility-header,
+    .utility-main {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .utility-header {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .utility-copy,
+    .calendar-page {
+      border-radius: 32px;
+      border: 1px solid rgba(19, 32, 51, 0.1);
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 22px 55px rgba(50, 79, 120, 0.15);
+    }
+
+    .utility-copy {
+      padding: clamp(28px, 5vw, 56px);
+    }
+
+    .utility-panel {
+      display: grid;
+      place-items: center;
+      min-height: 320px;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), transparent 26%),
+        linear-gradient(180deg, rgba(202, 221, 240, 0.82), rgba(229, 239, 249, 0.72));
+      box-shadow: 0 22px 55px rgba(50, 79, 120, 0.15);
+    }
+
+    .utility-section {
+      padding-top: 32px;
+      padding-bottom: 88px;
+    }
+
+    .calendar-page {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      padding: clamp(24px, 4vw, 44px);
+    }
+
+    .calendar-instructions,
+    .calendar-embed-card {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(19, 32, 51, 0.1);
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .calendar-code {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(19, 32, 51, 0.06);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+
+    .calendar-frame {
+      display: block;
+      width: 100%;
+      min-height: 640px;
+      border: 0;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    @media (max-width: 960px) {
+      .utility-header,
+      .calendar-page {
+        grid-template-columns: 1fr;
+      }
+
+      .utility-panel {
+        min-height: 240px;
+      }
+    }
+  </style>
+  <script src="translations.js" defer></script>
 </head>
-<body>
+<body data-page="calendar">
   <header class="hero utility-hero">
     <nav class="topbar">
       <div class="brand">
@@ -26,23 +116,30 @@
           <span class="brand-arch"></span>
         </span>
         <div>
-          <p class="eyebrow">Planering</p>
-          <h1>Kalender</h1>
+          <p class="eyebrow" data-i18n="calendar.eyebrow">Planering</p>
+          <h1 data-i18n="calendar.title">Kalender</h1>
         </div>
       </div>
       <div class="topbar-actions">
-        <a class="button button-ghost" href="index.html">Startsidan</a>
+        <label class="language-picker" for="language-select">
+          <span class="language-label" data-i18n="common.languageLabel">Språk / Language</span>
+          <select id="language-select" class="language-select">
+            <option value="sv" data-i18n="common.swedish">Svenska</option>
+            <option value="en" data-i18n="common.english">English</option>
+            <option value="ar" data-i18n="common.arabic">العربية</option>
+            <option value="fa" data-i18n="common.persian">فارسی</option>
+            <option value="uk" data-i18n="common.ukrainian">Українська</option>
+          </select>
+        </label>
+        <a class="button button-ghost" href="index.html" data-i18n="common.home">Startsidan</a>
       </div>
     </nav>
 
     <section class="utility-header">
       <div class="utility-copy">
-        <p class="eyebrow">Google Kalender</p>
-        <h2>Visa aktiviteter och bokningar</h2>
-        <p class="lead">
-          På den här sidan kan vi visa innehållet från en viss Google Kalender
-          direkt på webbplatsen.
-        </p>
+        <p class="eyebrow" data-i18n="calendar.heroEyebrow">Google Kalender</p>
+        <h2 data-i18n="calendar.heroTitle">Visa aktiviteter och bokningar</h2>
+        <p class="lead" data-i18n="calendar.heroLead">På den här sidan kan vi visa innehållet från en viss Google Kalender direkt på webbplatsen.</p>
       </div>
       <div class="utility-panel">
         <div class="calendar-icon" aria-hidden="true"></div>
@@ -54,18 +151,11 @@
     <section class="section utility-section">
       <div class="calendar-page">
         <div class="calendar-instructions">
-          <div class="poster-badge">Tillfällig text. Så använder vi sidan</div>
-          <h3>Koppla en offentlig Google Kalender</h3>
-          <p>
-            För att kalendern ska synas här behöver vi använda kalenderns
-            offentliga kalender-ID från Google Kalender.
-          </p>
-          <p>
-            Lägg sedan till kalender-ID i länken genom att ändra texten
-            <strong>DIN_KALENDER_ID</strong> i filen eller skicka ID:t till mig
-            så kan jag lägga in det åt er.
-          </p>
-          <div class="calendar-code">src=&quot;https://calendar.google.com/calendar/embed?src=DIN_KALENDER_ID&amp;ctz=Europe%2FStockholm&quot;</div>
+          <div class="poster-badge" data-i18n="calendar.badge">Så använder ni sidan</div>
+          <h3 data-i18n="calendar.blockTitle">Koppla en offentlig Google Kalender</h3>
+          <p data-i18n="calendar.text1">För att kalendern ska synas här behöver ni använda kalenderns offentliga kalender-ID från Google Kalender.</p>
+          <p data-i18n="calendar.text2">Lägg sedan till kalender-ID i länken genom att ändra texten DIN_KALENDER_ID i filen eller skicka ID:t till mig så kan jag lägga in det åt er.</p>
+          <div class="calendar-code">src="https://calendar.google.com/calendar/embed?src=DIN_KALENDER_ID&amp;ctz=Europe%2FStockholm"</div>
         </div>
 
         <div class="calendar-embed-card">
@@ -82,8 +172,8 @@
   </main>
 
   <footer class="footer">
-    <p>Lokala Hyresgästföreningen</p>
-    <p>Byt ut kalender-ID för att visa rätt Google Kalender.</p>
+    <p data-i18n="common.footerOrg">Lokala Hyresgästföreningen</p>
+    <p data-i18n="calendar.footerNote">Byt ut kalender-ID för att visa rätt Google Kalender.</p>
   </footer>
 </body>
 </html>
