@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalender</title>
+  <meta
+    name="description"
+    content="Kalendersida för den lokala hyresgästföreningen."
+  >
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero utility-hero">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-stem"></span>
+          <span class="brand-arch"></span>
+        </span>
+        <div>
+          <p class="eyebrow">Planering</p>
+          <h1>Kalender</h1>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <a class="button button-ghost" href="index.html">Startsidan</a>
+      </div>
+    </nav>
+
+    <section class="utility-header">
+      <div class="utility-copy">
+        <p class="eyebrow">Google Kalender</p>
+        <h2>Visa aktiviteter och bokningar</h2>
+        <p class="lead">
+          På den här sidan kan ni visa innehållet från en viss Google Kalender
+          direkt på webbplatsen.
+        </p>
+      </div>
+      <div class="utility-panel">
+        <div class="calendar-icon" aria-hidden="true"></div>
+      </div>
+    </section>
+  </header>
+
+  <main class="utility-main">
+    <section class="section utility-section">
+      <div class="calendar-page">
+        <div class="calendar-instructions">
+          <div class="poster-badge">Så använder ni sidan</div>
+          <h3>Koppla en offentlig Google Kalender</h3>
+          <p>
+            För att kalendern ska synas här behöver ni använda kalenderns
+            offentliga kalender-ID från Google Kalender.
+          </p>
+          <p>
+            Lägg sedan till kalender-ID i länken genom att ändra texten
+            <strong>DIN_KALENDER_ID</strong> i filen eller skicka ID:t till mig
+            så kan jag lägga in det åt er.
+          </p>
+          <div class="calendar-code">src=&quot;https://calendar.google.com/calendar/embed?src=DIN_KALENDER_ID&amp;ctz=Europe%2FStockholm&quot;</div>
+        </div>
+
+        <div class="calendar-embed-card">
+          <iframe
+            class="calendar-frame"
+            src="https://calendar.google.com/calendar/embed?src=DIN_KALENDER_ID&ctz=Europe%2FStockholm"
+            title="Google Kalender"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Lokala Hyresgästföreningen</p>
+    <p>Byt ut kalender-ID för att visa rätt Google Kalender.</p>
+  </footer>
+</body>
+</html>

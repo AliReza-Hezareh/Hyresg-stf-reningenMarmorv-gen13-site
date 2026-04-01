@@ -395,6 +395,10 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.cards-flex {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .cards-four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -588,6 +592,141 @@ h3 {
   padding: clamp(24px, 4vw, 44px);
 }
 
+.utility-hero {
+  padding-bottom: 40px;
+}
+
+.utility-header,
+.utility-main {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.utility-header {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.utility-copy,
+.notice-board,
+.calendar-page {
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.utility-copy {
+  padding: clamp(28px, 5vw, 56px);
+}
+
+.utility-panel {
+  display: grid;
+  place-items: center;
+  min-height: 320px;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.55), transparent 26%),
+    linear-gradient(180deg, rgba(202, 221, 240, 0.82), rgba(229, 239, 249, 0.72));
+  box-shadow: var(--shadow);
+}
+
+.utility-logo {
+  transform: scale(1.35);
+}
+
+.utility-section {
+  padding-top: 32px;
+  padding-bottom: 88px;
+}
+
+.notice-board,
+.calendar-page {
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.notice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.notice-card,
+.calendar-instructions,
+.calendar-embed-card {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+}
+
+.notice-card p,
+.calendar-instructions p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.calendar-page {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 24px;
+}
+
+.calendar-code {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(19, 32, 51, 0.06);
+  font-family: "Manrope", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+.calendar-frame {
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.calendar-icon {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #ffffff, #eff5fb);
+  box-shadow: 0 24px 50px rgba(50, 79, 120, 0.18);
+}
+
+.calendar-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 42px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background: linear-gradient(180deg, #ff3556, #ff1840);
+}
+
+.calendar-icon::after {
+  content: "";
+  position: absolute;
+  inset: 58px 24px 24px 24px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(19, 32, 51, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(19, 32, 51, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 .poster-badge {
   display: inline-flex;
   padding: 10px 14px;
@@ -643,13 +782,17 @@ h3 {
 @media (max-width: 960px) {
   .hero-content,
   .folkkok-header,
+  .utility-header,
   .accent-section .two-column,
   .logo-showcase,
   .cards,
+  .cards-flex,
   .cards-four,
   .faq-grid,
   .document-list,
+  .notice-grid,
   .poster-grid,
+  .calendar-page,
   .contact-card,
   .info-strip {
     grid-template-columns: 1fr;
@@ -663,6 +806,10 @@ h3 {
 
   .folkkok-logo-panel {
     min-height: 260px;
+  }
+
+  .utility-panel {
+    min-height: 240px;
   }
 
   .folkkok-logo-mark {
